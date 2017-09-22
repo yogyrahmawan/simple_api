@@ -1,8 +1,14 @@
 defmodule SimpleApiTest do
   use ExUnit.Case
-  doctest SimpleApi
+  use Plug.Test  
 
-  test "greets the world" do
-    assert SimpleApi.hello() == :world
+  @opts AppRouter.init([])
+
+  test "echo" do
+    conn = conn(:get, "/echo", "")
+          |> AppRouter.call(@opts) 
+
+    assert conn.state == :sent 
+    assert conn.status == 200
   end
 end

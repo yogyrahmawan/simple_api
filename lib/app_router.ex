@@ -5,7 +5,7 @@ defmodule AppRouter do
   plug :dispatch
 
 
-  get "/hello" do    
+  get "/echo" do    
     conn = fetch_query_params(conn)
 
     conn

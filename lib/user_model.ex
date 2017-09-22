@@ -1,4 +1,4 @@
-def User do 
+defmodule User do 
   use Ecto.Schema
   import Ecto.Changeset
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
@@ -11,7 +11,7 @@ def User do
     field :encrypted_password, :string
     field :email, :string
     field :password, :string, virtual: true
-    field :password_confirmation, :string, :virtual: true
+    field :password_confirmation, :string, virtual: true
   end 
 
   @required_fields ~w(username email password password_confirmation)
@@ -26,7 +26,7 @@ def User do
   end 
 
   defp validate_password(changeset) do 
-    case get_chage(changeset, :password_confirmation) do 
+    case get_change(changeset, :password_confirmation) do 
       nil -> add_error(changeset, :password, "is not valid")
       confirmation -> 
         password = get_change(changeset, :password)

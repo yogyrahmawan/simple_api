@@ -2,19 +2,6 @@ defmodule SimpleApi do
   use Application 
   require Logger
 
-  @moduledoc """
-  Documentation for SimpleApi.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> SimpleApi.hello
-      :world
-
-  """
   def start(_type, _args) do 
     import Supervisor.Spec, warn: false
 
